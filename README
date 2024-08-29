@@ -1,0 +1,7 @@
+Convert MPID force field parameter file (.str format) into xml files for use by openmm
+
+The MPID force field parameter files can converted from the Drude force field by Jing's code. (https://github.com/jing-huang/Drude2MPID)
+
+For the details of MPID polarizable force field, see J. Huang, A. Simmonett, F. Pickard, A. MacKerell Jr., and B. Brooks, Mapping the Drude Polarizable Force Field onto a Multipole and Induced Dipole Model, J. Chem. Phys., 147, 161702 (2017)
+
+
