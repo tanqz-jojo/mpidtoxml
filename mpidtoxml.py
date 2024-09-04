@@ -449,7 +449,10 @@ print(' </CMAPTorsionForce>')
 ##print(' <NonbondedForce coulomb14scale="0.833333" lj14scale="1.0" >')
 print(' <LennardJonesForce lj14scale="1.0">')
 for type in nonbondeds:
-    print('  <Atom class="%s" sigma="%.12g" epsilon="%.12g" sigma14="%.12g" epsilon14="%.12g"/>' % (type,  2*nonbondeds[type].sigma.value_in_unit(nanometer)/(2**(1/6)), nonbondeds[type].epsilon.value_in_unit(kilojoules_per_mole), 2*nonbondeds[type].sigma14.value_in_unit(nanometer)/(2**(1/6)), nonbondeds[type].epsilon14.value_in_unit(kilojoules_per_mole)))
+    if nonbondeds[type].sigma14.value_in_unit(nanometer) == 0 and nonbondeds[type].epsilon14.value_in_unit(kilojoules_per_mole) ==0 :
+       print('  <Atom class="%s" sigma="%.12g" epsilon="%.12g" />' % (type,  2*nonbondeds[type].sigma.value_in_unit(nanometer)/(2**(1/6)), nonbondeds[type].epsilon.value_in_unit(kilojoules_per_mole)))
+    else:
+       print('  <Atom class="%s" sigma="%.12g" epsilon="%.12g" sigma14="%.12g" epsilon14="%.12g"/>' % (type,  2*nonbondeds[type].sigma.value_in_unit(nanometer)/(2**(1/6)), nonbondeds[type].epsilon.value_in_unit(kilojoules_per_mole), 2*nonbondeds[type].sigma14.value_in_unit(nanometer)/(2**(1/6)), nonbondeds[type].epsilon14.value_in_unit(kilojoules_per_mole)))
 for type in nbfixes:
     print('  <NBFixPair class1="%s" class2="%s" sigma="%.16g" epsilon="%.17g"/>' %(nbfixes[type][0], nbfixes[type][1], nbfixes[type][2].value_in_unit(kilojoules_per_mole), nbfixes[type][3].value_in_unit(nanometer)/(2**(1/6))))
 print(' </LennardJonesForce>')
